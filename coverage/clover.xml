@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1667769160386" clover="3.2.0">
-  <project timestamp="1667769160386" name="All files">
-    <metrics statements="36" coveredstatements="31" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0" elements="38" coveredelements="33" complexity="0" loc="36" ncloc="36" packages="3" files="3" classes="3"/>
+<coverage generated="1667769407891" clover="3.2.0">
+  <project timestamp="1667769407891" name="All files">
+    <metrics statements="44" coveredstatements="39" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0" elements="46" coveredelements="41" complexity="0" loc="44" ncloc="44" packages="3" files="3" classes="3"/>
     <package name="components">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="Header.vue" path="/home/allison/Code/clicksign/src/components/Header.vue">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
       </file>
     </package>
     <package name="config">
