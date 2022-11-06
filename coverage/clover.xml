@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1667757962155" clover="3.2.0">
-  <project timestamp="1667757962155" name="All files">
-    <metrics statements="62" coveredstatements="57" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2" elements="70" coveredelements="65" complexity="0" loc="62" ncloc="62" packages="5" files="5" classes="5"/>
-    <package name="src">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="App.vue" path="/home/allison/Code/clicksign/src/App.vue">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+<coverage generated="1667769160386" clover="3.2.0">
+  <project timestamp="1667769160386" name="All files">
+    <metrics statements="36" coveredstatements="31" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0" elements="38" coveredelements="33" complexity="0" loc="36" ncloc="36" packages="3" files="3" classes="3"/>
+    <package name="components">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Header.vue" path="/home/allison/Code/clicksign/src/components/Header.vue">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.config">
+    <package name="config">
       <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>
       <file name="setupTests.ts" path="/home/allison/Code/clicksign/src/config/setupTests.ts">
         <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>
@@ -37,7 +39,7 @@
         <line num="20" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.mocks">
+    <package name="mocks">
       <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="handlers.ts" path="/home/allison/Code/clicksign/src/mocks/handlers.ts">
         <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -52,46 +54,6 @@
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.router">
-      <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="index.ts" path="/home/allison/Code/clicksign/src/router/index.ts">
-        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.views">
-      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="Home.vue" path="/home/allison/Code/clicksign/src/views/Home.vue">
-        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="12" count="1" type="stmt"/>
       </file>
     </package>
   </project>
