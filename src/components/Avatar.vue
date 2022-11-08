@@ -74,7 +74,7 @@ export default defineComponent({
         `${firstLetterPrimaryName}${firstLetterLastName}`.toUpperCase();
     },
   },
-  mounted() {
+  created() {
     this.getRandomColor();
     this.getContrastYIQ();
     this.getInitials();
