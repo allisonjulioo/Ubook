@@ -17,7 +17,7 @@
       type="submit"
       aria-label="Botão para enviar pesquisar"
     >
-      <img src="@/assets/ic-search.svg" alt="ìcone de busca" />
+      <cs-icon icon="search" alt="ìcone de busca" />
     </cs-button>
   </form>
 </template>

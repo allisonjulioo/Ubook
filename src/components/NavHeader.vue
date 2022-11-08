@@ -1,12 +1,12 @@
 <template>
-  <div data-testid="nav-header" class="cs-nav-header">
+  <nav class="cs-nav-header">
     <img
       src="@/assets/ic-logo.svg"
       alt="logo_agenda"
       aria-label="Logo do site de agenda"
     />
     <cs-search-bar />
-  </div>
+  </nav>
 </template>
 
 <script lang="ts">

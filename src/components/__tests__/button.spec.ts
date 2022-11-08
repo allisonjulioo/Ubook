@@ -1,7 +1,7 @@
 import Button from '@/components/Button.vue';
 import { mount } from '@vue/test-utils';
 
-describe('base-button', () => {
+describe('Button Component', () => {
   it('should have custom btn name from default slot', async () => {
     const wrapper = mount(Button, { slots: { default: 'Enter' } });
 

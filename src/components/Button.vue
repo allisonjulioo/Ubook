@@ -31,6 +31,10 @@ export default defineComponent({
       0 2px 4px 0.5px rgba(255, 255, 255, 0.16);
   }
 
+  &.cs-primary {
+    color: $secondary;
+  }
+
   &:is(.cs-icon) {
     background: transparent;
   }
