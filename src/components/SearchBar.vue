@@ -1,36 +1,36 @@
 <template>
-  <div data-testid="search-bar">
-    <form role="form" aria-label="Formulário de pesquisa do site de agenda">
-      <input
-        role="input"
-        type="text"
-        value=""
-        placeholder="Buscar..."
-        aria-label="Barra de pesquisa do site de agenda"
-      />
-      <clk-button
-        role="button"
-        type="submit"
-        aria-label="Botão para enviar pesquisar"
-      >
-        <img :src="iconSeach" alt="ìcone de busca" />
-      </clk-button>
-    </form>
-  </div>
+  <form
+    role="form"
+    aria-label="Formulário de pesquisa do site de agenda"
+    @submit="handleSubmitSearch"
+  >
+    <input
+      role="input"
+      type="text"
+      value=""
+      placeholder="Buscar..."
+      aria-label="Barra de pesquisa do site de agenda"
+    />
+    <cs-button
+      variant="primary"
+      role="button"
+      type="submit"
+      aria-label="Botão para enviar pesquisar"
+    >
+      <img src="@/assets/ic-search.svg" alt="ìcone de busca" />
+    </cs-button>
+  </form>
 </template>
 
-<script>
-import iconSeach from '../..//assets/ic-search.svg';
-import Button from '@/components/Button.vue';
-
+<script lang="ts">
 export default {
-  components: {
-    'clk-button': Button,
+  setup() {
+    return {};
   },
-  data() {
-    return {
-      iconSeach,
-    };
+  methods: {
+    handleSubmitSearch(event: HTMLFormElement) {
+      event?.preventDefault();
+    },
   },
 };
 </script>

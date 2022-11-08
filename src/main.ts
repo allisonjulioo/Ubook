@@ -1,3 +1,5 @@
+import Button from '@/components/Button.vue';
+import '@/scss/index.scss';
 import { createApp } from 'vue';
 import App from './App.vue';
 import { client } from './config/axios';
@@ -18,5 +20,7 @@ app.use(store);
 app.use(router);
 
 app.provide('$api', client);
+
+app.component('cs-button', Button);
 
 app.mount('#app');

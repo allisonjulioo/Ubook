@@ -1,48 +1,49 @@
 import SearchBar from '@/components/SearchBar.vue';
 import '@/config/setupTests';
-import { render } from '@testing-library/vue';
+import { mount } from '@vue/test-utils';
 
 describe('SearchBar component', () => {
   it('should shows seachBar form', async () => {
-    const { findByRole } = render(SearchBar);
+    const wrapper = mount(SearchBar);
 
-    const formSearch = await findByRole('form');
+    expect(wrapper.exists()).toBeTruthy();
 
-    expect(formSearch).toBeInTheDocument();
-    expect(formSearch).toHaveAttribute(
-      'aria-label',
+    expect(wrapper.isVisible()).toBeTruthy();
+
+    expect(wrapper.attributes('aria-label')).toBe(
       'Formulário de pesquisa do site de agenda',
     );
   });
 
   it('should shows seachBar input', async () => {
-    const { findByRole } = render(SearchBar);
+    const wrapper = mount(SearchBar);
 
-    const inputSearch = await findByRole('input');
+    const inputSearch = wrapper.find('input');
 
-    expect(inputSearch).toBeInTheDocument();
+    expect(inputSearch.exists()).toBeTruthy();
 
-    expect(inputSearch).toHaveAttribute(
-      'aria-label',
+    expect(inputSearch.attributes('aria-label')).toBe(
       'Barra de pesquisa do site de agenda',
     );
-    expect(inputSearch).toHaveAttribute('placeholder');
-    expect(inputSearch.getAttribute('placeholder')).toBe('Buscar...');
-    expect(inputSearch.getAttribute('type')).toBe('text');
+
+    expect(inputSearch.attributes('placeholder')).toBe('Buscar...');
+
+    expect(inputSearch.attributes('type')).toBe('text');
   });
 
   it('should shows seachBar button submit', async () => {
-    const { findByRole } = render(SearchBar);
+    const wrapper = mount(SearchBar);
 
-    const submitSearch = await findByRole('button');
+    const submitSearch = wrapper.find('cs-button');
 
-    expect(submitSearch).toBeInTheDocument();
+    expect(submitSearch.exists()).toBeTruthy();
 
-    expect(submitSearch).toHaveAttribute(
-      'aria-label',
+    expect(submitSearch.isVisible()).toBeTruthy();
+
+    expect(submitSearch.attributes('aria-label')).toBe(
       'Botão para enviar pesquisar',
     );
-    expect(submitSearch).toHaveAttribute('type');
-    expect(submitSearch.getAttribute('type')).toBe('submit');
+
+    expect(submitSearch.attributes('type')).toBe('submit');
   });
 });

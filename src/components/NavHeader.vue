@@ -1,30 +1,27 @@
 <template>
-  <div data-testid="nav-header" class="clk-nav-header">
+  <div data-testid="nav-header" class="cs-nav-header">
     <img
-      :src="iconLogo"
+      src="@/assets/ic-logo.svg"
       alt="logo_agenda"
       aria-label="Logo do site de agenda"
     />
-    <clk-search-bar />
+    <cs-search-bar />
   </div>
 </template>
 
-<script>
-import iconLogo from '../../assets/ic-logo.svg';
+<script lang="ts">
 import SearchBar from './SearchBar.vue';
 
 export default {
-  components: { 'clk-search-bar': SearchBar },
+  components: { 'cs-search-bar': SearchBar },
   data() {
-    return {
-      iconLogo,
-    };
+    return {};
   },
 };
 </script>
 
 <style lang="scss">
-.clk-nav-header {
+.cs-nav-header {
   height: 4rem;
   margin: 0 0 6rem;
   padding: 1rem;

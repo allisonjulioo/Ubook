@@ -1,39 +1,37 @@
 import NavHeader from '@/components/NavHeader.vue';
 import '@/config/setupTests';
-import { render, screen, waitFor } from '@testing-library/vue';
+import { mount } from '@vue/test-utils';
 
 describe('NavHeader component', () => {
   it('should component correctly styled with the dimensions and spacings', async () => {
-    render(NavHeader);
+    const wrapper = mount(NavHeader);
 
-    const navHeader = await screen.findByTestId('nav-header');
+    wrapper.exists();
 
-    expect(navHeader).toHaveClass('nav-header');
-
-    expect(navHeader).toBeInTheDocument();
+    expect(wrapper.classes()).toContain('cs-nav-header');
   });
 
   it('should shows logo at NavHeader', async () => {
-    render(NavHeader);
+    const wrapper = mount(NavHeader);
 
-    const logoAgenda = await screen.findByAltText('logo_agenda');
+    wrapper.exists();
 
-    expect(logoAgenda).toBeInTheDocument();
-    expect(logoAgenda.tagName).toBe('IMG');
+    const logoAgenda = wrapper.find('img');
 
-    waitFor(() => {
-      expect(logoAgenda).toHaveAttribute('src');
-      expect(logoAgenda.getAttribute('aria-label')).toBe(
-        'Logo do site de agenda',
-      );
-    });
+    expect(logoAgenda.attributes('alt')).toBe('logo_agenda');
+
+    expect(logoAgenda.attributes('aria-label')).toBe('Logo do site de agenda');
+
+    expect(logoAgenda.isVisible()).toBeTruthy();
   });
 
   it('should shows searchbar at NavHeader', async () => {
-    render(NavHeader);
+    const wrapper = mount(NavHeader);
 
-    const searchBar = await screen.findByTestId('search-bar');
+    const searchBar = wrapper.find('form');
 
-    expect(searchBar).toBeInTheDocument();
+    searchBar.exists();
+
+    expect(searchBar.isVisible()).toBeTruthy();
   });
 });

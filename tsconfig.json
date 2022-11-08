@@ -21,6 +21,7 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.svg",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
