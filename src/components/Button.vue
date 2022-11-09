@@ -35,6 +35,15 @@ export default defineComponent({
     color: $secondary;
   }
 
+  &.cs-secondary {
+    color: $white;
+  }
+
+  &.cs-link {
+    color: $secondary;
+    background: transparent;
+  }
+
   &:is(.cs-icon) {
     background: transparent;
   }

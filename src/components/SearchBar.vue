@@ -12,7 +12,7 @@
       aria-label="Barra de pesquisa do site de agenda"
     />
     <cs-button
-      variant="primary"
+      variant="icon"
       role="button"
       type="submit"
       aria-label="Botão para enviar pesquisar"

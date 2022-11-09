@@ -1,7 +1,21 @@
 $primary: #dbff90;
 $secondary: #fa7268;
 $bg: #f8f9fd;
+$white: #fff;
+$black: #000;
 
 $radius: 4px;
 
 $break-md: 981px;
+
+$box-shadow: 0 16px 10px 0 rgba($black, 0.4);
+
+@mixin background-opacity($color, $opacity: 0.3) {
+  background: $color;
+  background: rgba($color, $opacity);
+}
+
+@mixin top-bottom-border() {
+  border-top: 1px solid rgb(227, 231, 233);
+  border-bottom: 1px solid rgb(227, 231, 233);
+}

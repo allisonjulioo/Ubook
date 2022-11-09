@@ -17,10 +17,6 @@ if (process.env.NODE_ENV === 'development') {
 
 const app = createApp(App);
 
-app.use(store);
-
-app.use(router);
-
 app.provide('$api', client);
 
 app.component('cs-button', Button);
@@ -28,5 +24,11 @@ app.component('cs-button', Button);
 app.component('cs-icon', Icon);
 
 app.component('cs-avatar', Avatar);
+
+app.use(router);
+
+app.use(store);
+
+app.config.globalProperties.$store = store;
 
 app.mount('#app');
