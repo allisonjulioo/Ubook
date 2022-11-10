@@ -4,30 +4,8 @@ import { ModalStore } from '@/store/modules/modal';
 import { mount } from '@vue/test-utils';
 import { createStore } from 'vuex';
 
-const Component = {
-  template: `
-    <article> 
-     Modal {{test}} 
-    </article>
-  `,
-
-  data() {
-    return {
-      test: 'foo',
-    };
-  },
-};
-
 const mockState = {
-  modal: {
-    component: Component,
-    open: true,
-    id: 'modal-add-contact',
-    title: 'Criar novo contato',
-    primaryButtonLabel: 'Salvar',
-    closeOnBackdropClick: true,
-    secondaryButtonAction: () => ({}),
-  },
+  modalId: 'test-modal',
 };
 
 describe('Modal Component', () => {
@@ -47,6 +25,10 @@ describe('Modal Component', () => {
   });
 
   const configMock = {
+    props: {
+      title: 'Modal Teste',
+      id: 'test-modal',
+    },
     global: {
       plugins: [store],
     },
@@ -55,9 +37,9 @@ describe('Modal Component', () => {
   it('should mount correctly component with state', async () => {
     const wrapper = mount(Modal, configMock);
 
-    expect(wrapper.vm.modal).toEqual(mockState.modal);
+    expect(wrapper.vm.modalId).toEqual(mockState.modalId);
 
-    wrapper.vm.handleCloseModal();
+    // wrapper.vm.handleCloseModal();
   });
 
   it('should show header', async () => {
@@ -67,18 +49,15 @@ describe('Modal Component', () => {
 
     expect(modalTile.exists()).toBeTruthy();
 
-    expect(modalTile.text()).toBe('Criar novo contato');
+    expect(modalTile.text()).toBe('Modal Teste');
   });
 
   it('should hide header without title label', async () => {
-    const newState = {
-      ...mockState.modal,
-      title: undefined,
+    const props = {
+      id: 'test-modal',
     };
 
-    store.dispatch('openModal', newState);
-
-    const wrapper = mount(Modal, configMock);
+    const wrapper = mount(Modal, { ...configMock, props });
 
     const modalFooter = wrapper.find('header');
 
@@ -86,13 +65,16 @@ describe('Modal Component', () => {
   });
 
   it('should render child component', async () => {
-    const wrapper = mount(Modal, configMock);
+    const wrapper = mount(Modal, {
+      ...configMock,
+      slots: { default: 'Modal foo' },
+    });
 
-    const modalComponent = wrapper.find('article');
+    const modalContent = wrapper.find('main');
 
-    expect(modalComponent.exists()).toBeTruthy();
+    expect(modalContent.exists()).toBeTruthy();
 
-    expect(modalComponent.text()).toBe('Modal foo');
+    expect(modalContent.text()).toBe('Modal foo');
   });
 
   it('should show footer', async () => {
@@ -102,21 +84,19 @@ describe('Modal Component', () => {
 
     expect(modalFooter.exists()).toBeTruthy();
 
-    expect(modalFooter.text()).toBe('Salvar');
+    expect(modalFooter.text()).toBe('Fechar');
   });
 
-  it('should hide footer without buttons label', async () => {
-    const newState = {
-      ...mockState.modal,
-      primaryButtonLabel: undefined,
-    };
-
-    store.dispatch('openModal', newState);
-
-    const wrapper = mount(Modal, configMock);
+  it('should hide footer with slot label', async () => {
+    const wrapper = mount(Modal, {
+      ...configMock,
+      slots: { footer: 'Salvar' },
+    });
 
     const modalFooter = wrapper.find('footer');
 
-    expect(modalFooter.exists()).toBeFalsy();
+    expect(modalFooter.exists()).toBeTruthy();
+
+    expect(modalFooter.text()).toBe('Salvar');
   });
 });

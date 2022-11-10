@@ -8,7 +8,11 @@ $radius: 4px;
 
 $break-md: 981px;
 
-$box-shadow: 0 16px 10px 0 rgba($black, 0.4);
+$huge-alfa: rgba($black, 0.04);
+
+$mid-alfa: rgba($black, 0.4);
+
+$box-shadow: 0 16px 10px 0 $mid-alfa;
 
 @mixin background-opacity($color, $opacity: 0.3) {
   background: $color;

@@ -25,10 +25,8 @@ export default defineComponent({
     height: 2rem;
     padding: 0.5rem 1rem;
     border-radius: 16px;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16),
-      0 0 0 0.5px rgba(255, 255, 255, 0.16),
-      inset 0 0 0 0.5px rgba(255, 255, 255, 0.16),
-      0 2px 4px 0.5px rgba(255, 255, 255, 0.16);
+    box-shadow: 0 0 0 1px $huge-alfa, 0 0 0 0.5px $huge-alfa,
+      inset 0 0 0 0.5px $huge-alfa, 0 2px 4px 0.5px $huge-alfa;
   }
 
   &.cs-primary {
@@ -42,6 +40,7 @@ export default defineComponent({
   &.cs-link {
     color: $secondary;
     background: transparent;
+    box-shadow: none;
   }
 
   &:is(.cs-icon) {
@@ -51,6 +50,11 @@ export default defineComponent({
   &:is(.cs-light) {
     color: $primary;
     background: transparent;
+  }
+
+  &:disabled {
+    opacity: 0.32;
+    cursor: default;
   }
 }
 </style>

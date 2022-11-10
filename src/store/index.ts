@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import { FormContactStore } from './modules/formContact';
 import { ModalStore } from './modules/modal';
 
 export const store = createStore({
@@ -8,5 +9,6 @@ export const store = createStore({
   actions: {},
   modules: {
     ModalStore,
+    FormContactStore,
   },
 });

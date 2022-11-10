@@ -1,45 +1,31 @@
 <template>
-  <div v-if="modal">
+  <div v-if="modalId">
     <transition name="modal-fade">
-      <div v-show="modal.open" class="modal" :id="modal.id">
+      <div v-show="isOpen" class="modal" :id="modalId">
         <div
           class="modal__backdrop"
-          @click="modal.closeOnBackdropClick ? handleCloseModal() : null"
+          @click="closeOnBackdropClick ? handleCloseModal() : null"
         />
         <div class="modal__content" role="dialog">
           <section>
-            <header class="modal__content__header" v-if="modal.title">
-              {{ modal.title }}
+            <header class="modal__content__header" v-if="title">
+              {{ title }}
             </header>
 
             <main class="modal__content__body">
-              <component
-                :is="{ ...modal.component }"
-                :close="modal.close"
-                :dismiss="modal.dismiss"
-                v-bind="modal.props"
-                :class="{ [modal.id]: modal.component }"
-              />
+              <slot />
             </main>
 
-            <footer
-              class="modal__content__footer"
-              v-if="modal.primaryButtonLabel || modal.secondaryButtonLabel"
-            >
-              <cs-button
-                v-if="modal.secondaryButtonLabel"
-                variant="link"
-                @click="modal.secondaryButtonAction"
-              >
-                {{ modal.secondaryButtonLabel }}
-              </cs-button>
-              <cs-button
-                v-if="modal.primaryButtonLabel"
-                variant="secondary"
-                @click="modal.primaryButtonAction"
-              >
-                {{ modal.primaryButtonLabel }}
-              </cs-button>
+            <footer class="modal__content__footer">
+              <slot name="footer">
+                <cs-button
+                  class="modal__content__footer__button"
+                  variant="secondary"
+                  @click="handleCloseModal()"
+                >
+                  Fechar
+                </cs-button>
+              </slot>
             </footer>
           </section>
         </div>
@@ -54,15 +40,42 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'CsModal',
 
+  data() {
+    return {
+      isOpen: false,
+    };
+  },
+
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+
+    title: {
+      type: String,
+    },
+
+    closeOnBackdropClick: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
   computed: {
-    ...mapGetters(['modal']),
+    ...mapGetters(['modalId']),
   },
 
   methods: {
     ...mapActions(['closeModal']),
 
     handleCloseModal() {
-      this.closeModal(this.modal.id);
+      this.closeModal();
+    },
+  },
+  watch: {
+    modalId(currentId) {
+      this.isOpen = this.id === currentId;
     },
   },
 };
@@ -119,6 +132,13 @@ export default {
       gap: 4px;
       flex-direction: row;
       justify-content: flex-end;
+
+      &__button {
+        &:disabled {
+          cursor: default;
+          opacity: 0.32;
+        }
+      }
     }
   }
 }

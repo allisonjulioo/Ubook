@@ -1,55 +1,39 @@
-import type { Component } from 'vue';
 import { Commit } from 'vuex';
 
 export interface ModalData {
   id: string;
-  open: boolean;
-  component: Component;
-  title?: string;
-  props?: any; // eslint-disable-line
-  primaryButtonLabel?: string;
-  secondaryButtonLabel?: string;
-  secondaryButtonAction?: () => void;
-  primaryButtonAction?: () => void;
-  closeOnBackdropClick?: boolean;
 }
 
 export interface ModalState {
-  modal: ModalData;
+  modalId: string | null;
 }
 
 export const ModalStore = {
   state: {
-    modal: {
-      id: '',
-    },
+    modalId: '',
   },
 
   getters: {
-    modal: (state: ModalState) => state.modal,
+    modalId: (state: ModalState) => state.modalId,
   },
 
   mutations: {
-    openModalData: (state: ModalState, payload: ModalData) => {
-      state.modal = payload;
+    openModalData: (state: ModalState, payload: string) => {
+      state.modalId = payload;
     },
 
-    closelData: (state: ModalState, payload: string) => {
-      state.modal = { ...state.modal, open: false, id: payload };
+    closeModalData: (state: ModalState) => {
+      state.modalId = null;
     },
   },
 
   actions: {
-    openModal({ commit }: { commit: Commit }, params: ModalData) {
+    openModal({ commit }: { commit: Commit }, params: string) {
       commit('openModalData', params);
     },
 
-    closeModal({ commit }: { commit: Commit }, params: string) {
-      if (!params) {
-        return;
-      }
-
-      commit('closelData', params);
+    closeModal({ commit }: { commit: Commit }) {
+      commit('closeModalData');
     },
   },
 };

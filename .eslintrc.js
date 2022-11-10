@@ -16,6 +16,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 0,
     '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
     'vue/multi-word-component-names': 0,
     'no-console': ['warn', { allow: ['warn'] }],
   },
