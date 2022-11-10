@@ -1,4 +1,6 @@
+import { client } from '@/config/axios';
 import { v4 as uuidv4 } from 'uuid';
+import { Commit } from 'vuex';
 
 export interface Contacts {
   id: string;
@@ -24,9 +26,19 @@ export const ContactListStore = {
     contacts: (state: ContactState) => state.contacts,
   },
 
-  mutations: {},
+  mutations: {
+    getContactsData: async (state: ContactState, search?: string) => {
+      const { data } = await client.get('/contacts', { params: { search } });
+
+      state.contacts = data;
+    },
+  },
 
   actions: {
+    getContacts({ commit }: { commit: Commit }, search?: string) {
+      commit('getContactsData', search);
+    },
+
     addContact({ state }: { state: ContactState }, params: Contacts) {
       return new Promise(resolve => {
         state.contacts.push({ ...params, id: String(uuidv4()) });

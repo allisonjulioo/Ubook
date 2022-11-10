@@ -1,13 +1,14 @@
 <template>
   <form
+    @submit="handleSubmitSearch"
     role="form"
     aria-label="Formulário de pesquisa do site de agenda"
-    @submit="handleSubmitSearch"
   >
     <input
       role="input"
       type="text"
-      value=""
+      v-model="search"
+      @input="handleChangeInput"
       placeholder="Buscar..."
       aria-label="Barra de pesquisa do site de agenda"
     />
@@ -22,14 +23,26 @@
   </form>
 </template>
 
-<script lang="ts">
+<script>
+import { mapActions } from 'vuex';
 export default {
-  setup() {
-    return {};
+  data() {
+    return {
+      search: '',
+    };
   },
   methods: {
-    handleSubmitSearch(event: HTMLFormElement) {
+    ...mapActions(['getContacts']),
+
+    handleChangeInput() {
+      if (this.search.length === 0) {
+        this.getContacts();
+      }
+    },
+
+    handleSubmitSearch(event) {
       event?.preventDefault();
+      this.getContacts(this.search);
     },
   },
 };

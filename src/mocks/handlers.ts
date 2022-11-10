@@ -1,11 +1,5 @@
-import { rest } from 'msw';
+import { contacts } from './contacts';
 
-export default [
-  rest.get('/message', (req, res, ctx) => {
-    return res(
-      ctx.json({
-        message: 'it works :)',
-      }),
-    );
-  }),
-];
+const handlers = [...contacts];
+
+export { handlers };

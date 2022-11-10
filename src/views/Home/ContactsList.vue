@@ -40,6 +40,7 @@ export default {
   name: 'ContactList',
   computed: {
     ...mapGetters(['contacts']),
+
     fields(): ContactsHead[] {
       return [
         {
@@ -67,15 +68,33 @@ export default {
   },
 
   methods: {
-    ...mapActions(['removeContact']),
+    ...mapActions([
+      'getContacts',
+      'removeContact',
+      'openConfirm',
+      'closeConfirm',
+    ]),
+
+    handleremoveContact(id: string) {
+      this.removeContact(id).then(() => this.closeConfirm());
+    },
 
     handleRemoveContact(id: string) {
-      this.removeContact(id);
+      this.openConfirm({
+        title: 'Excluir contato',
+        text: 'Quero excluir',
+        onConfirm: () => this.handleremoveContact(id),
+        onDecline: () => this.closeConfirm(),
+      });
     },
 
     handleEditContact(id: string) {
       this.$emit('editContact', id);
     },
+  },
+
+  mounted() {
+    this.getContacts();
   },
 };
 </script>
