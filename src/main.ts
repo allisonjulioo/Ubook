@@ -10,7 +10,7 @@ import './registerServiceWorker';
 import { router } from './router';
 import { store } from './store';
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'test') {
   const { worker } = require('./mocks/browser');
   worker.start();
 }
