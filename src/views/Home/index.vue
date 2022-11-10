@@ -2,9 +2,9 @@
   <cs-empty-list>
     <cs-button variant="primary" @click="handleOpen">Criar contato</cs-button>
   </cs-empty-list>
-  <cs-contacts-list />
+  <cs-contacts-list @editContact="handleEditContact" />
   <cs-modal id="modal-add-contact" title="Criar novo contato">
-    <cs-form-contact />
+    <cs-form-contact :id="selectedId" />
     <template v-slot:footer>
       <cs-button variant="link" @click="handleClose">Cancelar</cs-button>
       <cs-button
@@ -27,6 +27,12 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'HomeScreen',
 
+  data() {
+    return {
+      selectedId: '',
+    };
+  },
+
   components: {
     'cs-empty-list': EmptyList,
     'cs-contacts-list': ContactsList,
@@ -38,7 +44,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['openModal', 'closeModal']),
+    ...mapActions(['openModal', 'closeModal', 'addContact', 'editContact']),
 
     handleOpen() {
       this.openModal('modal-add-contact');
@@ -48,8 +54,21 @@ export default {
       this.closeModal('modal-add-contact');
     },
 
+    handleEditContact(id) {
+      this.selectedId = id;
+      this.handleOpen();
+    },
+
     handleSaveContact() {
-      console.log('data', this.form);
+      if (this.form.id) {
+        this.editContact(this.form).then(() => {
+          this.handleClose();
+        });
+        return;
+      }
+      this.addContact(this.form).then(() => {
+        this.handleClose();
+      });
     },
   },
 };

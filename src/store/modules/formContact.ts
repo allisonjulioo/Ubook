@@ -2,6 +2,7 @@ import { Commit } from 'vuex';
 
 export interface FormData {
   form: {
+    id?: string;
     name: string;
     email: string;
     phone: string;

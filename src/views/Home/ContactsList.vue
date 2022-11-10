@@ -18,10 +18,10 @@
       <span>{{ contact.email }}</span>
       <span>{{ contact.phone }}</span>
       <section class="cs-list__actions">
-        <cs-button variant="icon">
+        <cs-button variant="icon" @click="handleEditContact(contact.id)">
           <cs-icon icon="edit" alt="ìcone para editar um item" />
         </cs-button>
-        <cs-button variant="icon">
+        <cs-button variant="icon" @click="handleRemoveContact(contact.id)">
           <cs-icon icon="delete" alt="ìcone para deletar um item" />
         </cs-button>
       </section>
@@ -30,6 +30,7 @@
 </template>
 
 <script lang="ts">
+import { mapActions, mapGetters } from 'vuex';
 interface ContactsHead {
   name: string;
   key: string;
@@ -38,6 +39,7 @@ interface ContactsHead {
 export default {
   name: 'ContactList',
   computed: {
+    ...mapGetters(['contacts']),
     fields(): ContactsHead[] {
       return [
         {
@@ -63,23 +65,18 @@ export default {
       return this.fields.length;
     },
   },
-  setup() {
-    return {
-      contacts: [
-        {
-          name: 'Allsson',
-          email: 'allison@email.com',
-          phone: '31 998901408',
-        },
-        {
-          name: 'Allsson',
-          email: 'allison@email.com',
-          phone: '31 998901408',
-        },
-      ],
-    };
+
+  methods: {
+    ...mapActions(['removeContact']),
+
+    handleRemoveContact(id: string) {
+      this.removeContact(id);
+    },
+
+    handleEditContact(id: string) {
+      this.$emit('editContact', id);
+    },
   },
-  methods: {},
 };
 </script>
 

@@ -24,6 +24,11 @@ import { required, email } from '@vuelidate/validators';
 import { mapActions } from 'vuex';
 
 export default {
+  props: {
+    id: {
+      type: String,
+    },
+  },
   data() {
     return {
       v$: useVuelidate(),
@@ -45,7 +50,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setValidateForm', 'setForm']),
+    ...mapActions(['setValidateForm', 'setForm', 'getContact']),
 
     async handleSubmitForm() {
       const isValidName = await this.v$.form.name.$validate();
@@ -62,6 +67,22 @@ export default {
         this.setForm(this.form);
       }
     },
+
+    getEditContact() {
+      this.getContact(this.id).then(contact => {
+        this.form = contact;
+      });
+    },
+  },
+
+  mounted() {
+    if (this.id) {
+      this.getEditContact();
+    }
+  },
+
+  beforeUnmount() {
+    this.form = {};
   },
 };
 </script>
