@@ -40,8 +40,6 @@ describe('Confirm Delete Component', () => {
     const wrapper = mount(ConfirmDelete, configMock);
 
     expect(wrapper.vm.confirm).toEqual(mockState.confirm);
-
-    // wrapper.vm.handleCloseModal();
   });
 
   it('should show header', async () => {

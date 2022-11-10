@@ -36,7 +36,11 @@ export const ContactListStore = {
 
   actions: {
     getContacts({ commit }: { commit: Commit }, search?: string) {
-      commit('getContactsData', search);
+      const isTestEnv = process.env.NODE_ENV === 'test';
+
+      if (isTestEnv) {
+        commit('getContactsData', search);
+      }
     },
 
     addContact({ state }: { state: ContactState }, params: Contacts) {

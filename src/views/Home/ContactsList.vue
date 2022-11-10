@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-list">
+  <div class="cs-list" v-if="contacts.length > 0">
     <div class="cs-list__template">
       <span v-for="(field, index) in fields" :key="index">
         {{ field.name }}
@@ -8,6 +8,7 @@
 
     <div
       class="cs-list__template"
+      alt="item_contact_list"
       v-for="(contact, index) in contacts"
       :key="index"
     >
@@ -29,19 +30,15 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { mapActions, mapGetters } from 'vuex';
-interface ContactsHead {
-  name: string;
-  key: string;
-}
 
 export default {
   name: 'ContactList',
   computed: {
     ...mapGetters(['contacts']),
 
-    fields(): ContactsHead[] {
+    fields() {
       return [
         {
           name: 'Contatos',
@@ -62,7 +59,7 @@ export default {
       ];
     },
 
-    fieldsLength(): number {
+    fieldsLength() {
       return this.fields.length;
     },
   },
@@ -75,11 +72,11 @@ export default {
       'closeConfirm',
     ]),
 
-    handleremoveContact(id: string) {
+    handleremoveContact(id) {
       this.removeContact(id).then(() => this.closeConfirm());
     },
 
-    handleRemoveContact(id: string) {
+    handleRemoveContact(id) {
       this.openConfirm({
         title: 'Excluir contato',
         text: 'Quero excluir',
@@ -88,7 +85,7 @@ export default {
       });
     },
 
-    handleEditContact(id: string) {
+    handleEditContact(id) {
       this.$emit('editContact', id);
     },
   },

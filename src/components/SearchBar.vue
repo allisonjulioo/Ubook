@@ -7,6 +7,7 @@
     <input
       role="input"
       type="text"
+      alt="input_header_search"
       v-model="search"
       @input="handleChangeInput"
       placeholder="Buscar..."
@@ -14,11 +15,12 @@
     />
     <cs-button
       variant="icon"
+      alt="button_header_search"
       role="button"
       type="submit"
       aria-label="Botão para enviar pesquisar"
     >
-      <cs-icon icon="search" alt="ìcone de busca" />
+      <cs-icon icon="search" alt="icon_button_header_search" />
     </cs-button>
   </form>
 </template>

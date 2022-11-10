@@ -1,8 +1,10 @@
 <template>
-  <cs-empty-list>
+  <cs-empty-list v-if="contacts.length === 0">
     <cs-button variant="primary" @click="handleOpen">Criar contato</cs-button>
   </cs-empty-list>
+
   <cs-contacts-list @editContact="handleEditContact" />
+
   <cs-modal id="modal-add-contact" title="Criar novo contato">
     <cs-form-contact :id="selectedId" />
     <template v-slot:footer>
@@ -40,7 +42,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['isValidForm', 'form']),
+    ...mapGetters(['isValidForm', 'form', 'contacts']),
   },
 
   methods: {

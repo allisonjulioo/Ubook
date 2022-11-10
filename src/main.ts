@@ -12,6 +12,7 @@ import { store } from './store';
 
 if (process.env.NODE_ENV === 'test') {
   const { worker } = require('./mocks/browser');
+
   worker.start();
 }
 

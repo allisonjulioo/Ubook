@@ -5,7 +5,7 @@ export interface ModalData {
 }
 
 export interface ModalState {
-  modalId: string | null;
+  modalId: string;
 }
 
 export const ModalStore = {
@@ -23,7 +23,7 @@ export const ModalStore = {
     },
 
     closeModalData: (state: ModalState) => {
-      state.modalId = null;
+      state.modalId = '';
     },
   },
 
