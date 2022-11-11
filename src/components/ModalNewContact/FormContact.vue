@@ -3,6 +3,7 @@
     <fieldset>
       <label> Nome </label>
       <input
+        name="contact-name"
         v-model="form.name"
         :class="v$.form.name.$error && 'is-invalid'"
         @input="handleSubmitForm()"
@@ -12,6 +13,7 @@
     <fieldset>
       <label> E-mail </label>
       <input
+        name="contact-email"
         v-model="form.email"
         :class="v$.form.email.$error && 'is-invalid'"
         @input="handleSubmitForm()"
@@ -21,6 +23,7 @@
     <fieldset class="half">
       <label> Telefone </label>
       <input
+        name="contact-phone"
         v-model="form.phone"
         :class="v$.form.phone.$error && 'is-invalid'"
         @input="handleSubmitForm()"

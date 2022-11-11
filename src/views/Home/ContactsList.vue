@@ -20,10 +20,18 @@
       <span>{{ contact.email }}</span>
       <span>{{ contact.phone }}</span>
       <section class="cs-list__actions">
-        <cs-button variant="icon" @click="handleEditContact(contact.id)">
+        <cs-button
+          alt="Editar o contato"
+          variant="icon"
+          @click="handleEditContact(contact.id)"
+        >
           <cs-icon icon="edit" alt="ìcone para editar um item" />
         </cs-button>
-        <cs-button variant="icon" @click="handleRemoveContact(contact.id)">
+        <cs-button
+          alt="Deletar o contato"
+          variant="icon"
+          @click="handleRemoveContact(contact.id)"
+        >
           <cs-icon icon="delete" alt="ìcone para deletar um item" />
         </cs-button>
       </section>
