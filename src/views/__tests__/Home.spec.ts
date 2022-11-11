@@ -89,9 +89,9 @@ describe('Contact list screen', () => {
     await waitFor(() => {
       screen.getByText(/Contatos/i);
 
-      screen.getByText(/E-mail/i);
+      screen.getAllByText(/E-mail/i);
 
-      screen.getByText(/Telefone/i);
+      screen.getAllByText(/Telefone/i);
 
       //  list
 

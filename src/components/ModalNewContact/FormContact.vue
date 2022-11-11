@@ -1,20 +1,31 @@
 <template>
   <form>
-    <input
-      v-model="form.name"
-      :class="v$.form.name.$error && 'is-invalid'"
-      @input="handleSubmitForm()"
-    />
-    <input
-      v-model="form.email"
-      :class="v$.form.email.$error && 'is-invalid'"
-      @input="handleSubmitForm()"
-    />
-    <input
-      v-model="form.phone"
-      :class="v$.form.phone.$error && 'is-invalid'"
-      @input="handleSubmitForm()"
-    />
+    <fieldset>
+      <label> Nome </label>
+      <input
+        v-model="form.name"
+        :class="v$.form.name.$error && 'is-invalid'"
+        @input="handleSubmitForm()"
+      />
+    </fieldset>
+
+    <fieldset>
+      <label> E-mail </label>
+      <input
+        v-model="form.email"
+        :class="v$.form.email.$error && 'is-invalid'"
+        @input="handleSubmitForm()"
+      />
+    </fieldset>
+
+    <fieldset class="half">
+      <label> Telefone </label>
+      <input
+        v-model="form.phone"
+        :class="v$.form.phone.$error && 'is-invalid'"
+        @input="handleSubmitForm()"
+      />
+    </fieldset>
   </form>
 </template>
 

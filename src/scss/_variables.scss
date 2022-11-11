@@ -3,15 +3,21 @@ $secondary: #fa7268;
 $highlight: #fff3f2;
 $bg: #f8f9fd;
 $white: #fff;
-$black: #000;
+$dark: #2a2d3b;
+$light-grey: #e4e7f4;
+$grey: #c0c3d2;
+$ice: #e1e1e1;
+$bluey-grey: #9198af;
 
 $radius: 4px;
 
 $break-md: 981px;
 
-$huge-alfa: rgba($black, 0.04);
+$huge-alfa: rgba(0, 0, 0, 0.08);
 
-$mid-alfa: rgba($black, 0.4);
+$medium-alfa: rgba(0, 0, 0, 0.08);
+
+$mid-alfa: rgba($dark, 0.4);
 
 $box-shadow: 0 16px 10px 0 $mid-alfa;
 

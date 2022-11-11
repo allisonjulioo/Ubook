@@ -1,10 +1,21 @@
 import NavHeader from '@/components/NavHeader.vue';
 import '@/config/setupTests';
+import { store } from '@/store';
 import { mount } from '@vue/test-utils';
 
 describe('NavHeader component', () => {
+  const configMock = {
+    props: {
+      title: 'Modal Teste',
+      id: 'test-modal',
+    },
+    global: {
+      plugins: [store],
+    },
+  };
+
   it('should component correctly styled with the dimensions and spacings', async () => {
-    const wrapper = mount(NavHeader);
+    const wrapper = mount(NavHeader, configMock);
 
     wrapper.exists();
 
@@ -12,7 +23,7 @@ describe('NavHeader component', () => {
   });
 
   it('should shows logo at NavHeader', async () => {
-    const wrapper = mount(NavHeader);
+    const wrapper = mount(NavHeader, configMock);
 
     wrapper.exists();
 
@@ -26,7 +37,7 @@ describe('NavHeader component', () => {
   });
 
   it('should shows searchbar at NavHeader', async () => {
-    const wrapper = mount(NavHeader);
+    const wrapper = mount(NavHeader, configMock);
 
     const searchBar = wrapper.find('form');
 

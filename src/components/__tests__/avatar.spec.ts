@@ -20,6 +20,6 @@ describe('Avatar Component', () => {
 
     expect(wrapper.isVisible()).toBeTruthy();
 
-    expect(wrapper.text()).toContain('AN');
+    expect(wrapper.text()).toContain('A');
   });
 });

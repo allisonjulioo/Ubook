@@ -98,7 +98,7 @@ export default {
     left: 0;
     right: 0;
     z-index: 0;
-    @include background-opacity($black, 0.5);
+    @include background-opacity($dark, 0.5);
   }
 
   &__content {
@@ -125,6 +125,9 @@ export default {
     &__body {
       position: relative;
       padding: 20px 10px;
+      font-size: 0.875rem;
+      padding: 1.2rem 1.5rem;
+      min-height: 6rem;
       @include top-bottom-border();
     }
 

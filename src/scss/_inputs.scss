@@ -1,0 +1,26 @@
+input {
+  height: 2rem;
+  font-size: 1rem;
+  padding: 0.438rem 0.5rem 0.375rem;
+  border-radius: $radius;
+  border: 1px solid $grey;
+
+  &.secondary {
+    border: none;
+    background-color: $light-grey;
+  }
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 0.25rem;
+  }
+  margin-bottom: 1rem;
+
+  &.half {
+    width: 25%;
+  }
+}

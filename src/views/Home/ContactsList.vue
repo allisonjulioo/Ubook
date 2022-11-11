@@ -1,6 +1,6 @@
 <template>
   <div class="cs-list" v-if="contactsList.length > 0">
-    <div class="cs-list__template">
+    <div class="cs-list__template cs-list__header">
       <span v-for="(field, index) in fields" :key="index">
         {{ field.name }}
       </span>
@@ -13,7 +13,7 @@
       :class="{ 'new-contact': contact.isNewItem }"
       :key="index"
     >
-      <section>
+      <section class="cs-list__item__avatar">
         <cs-avatar :name="contact.name" />
         <span>{{ contact.name }}</span>
       </section>
@@ -111,7 +111,7 @@ export default {
     handleRemoveContact(id) {
       this.openConfirm({
         title: 'Excluir contato',
-        text: 'Quero excluir',
+        text: 'Deseja realmente excluir o contato?',
         onConfirm: () => this.handleremoveContact(id),
         onDecline: () => this.closeConfirm(),
       });
@@ -157,20 +157,66 @@ export default {
 
 <style lang="scss">
 .cs-list {
+  margin: 0 1em;
+
   &__template {
     display: grid;
     grid-template-columns: repeat(v-bind(fieldsLength), 1fr);
   }
 
+  &__header {
+    height: 2.5rem;
+    background: $white;
+    border: 1px solid $ice;
+    padding: 0 2em;
+    border-radius: $radius $radius 0 0;
+
+    span {
+      font-size: 0.813rem;
+      color: $bluey-grey;
+      display: flex;
+      align-items: center;
+
+      &:nth-child(1) {
+        position: relative;
+        left: 1.6em;
+      }
+    }
+  }
+
   &__item {
+    cursor: pointer;
+    height: 2.5rem;
+    background: $white;
+    border: 1px solid $ice;
+    padding: 0 2em;
+    margin-top: -1px;
+
+    span {
+      font-size: 0.875rem;
+      color: $dark;
+      display: flex;
+      align-items: center;
+    }
+
+    &:hover,
     &.new-contact {
       background: $highlight;
+    }
+
+    &__avatar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: -1.2rem;
     }
   }
 
   &__actions {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
   }
 }
 </style>

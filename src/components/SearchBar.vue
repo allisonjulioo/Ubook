@@ -3,6 +3,7 @@
     @submit="handleSubmitSearch"
     role="form"
     aria-label="Formulário de pesquisa do site de agenda"
+    class="search-form"
   >
     <input
       role="input"
@@ -12,6 +13,7 @@
       @input="handleChangeInput"
       placeholder="Buscar..."
       aria-label="Barra de pesquisa do site de agenda"
+      class="secondary search-form__input"
     />
     <cs-button
       variant="icon"
@@ -19,6 +21,7 @@
       role="button"
       type="submit"
       aria-label="Botão para enviar pesquisar"
+      class="search-form__button"
     >
       <cs-icon icon="search" alt="icon_button_header_search" />
     </cs-button>
@@ -49,3 +52,22 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.search-form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  &__input {
+    width: 100%;
+  }
+
+  &__button {
+    right: 20px;
+    position: absolute;
+    z-index: 2;
+  }
+}
+</style>

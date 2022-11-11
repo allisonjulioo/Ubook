@@ -5,11 +5,17 @@
       alt="logo_agenda"
       aria-label="Logo do site de agenda"
     />
-    <cs-button variant="primary" @click="handleOpen" v-if="contacts.length > 0">
-      <cs-icon icon="plus" alt="ìcone para adicionar um item" />
-      <span>Criar contato</span>
-    </cs-button>
-    <cs-search-bar />
+    <div class="cs-nav-header__search">
+      <cs-button
+        variant="primary"
+        @click="handleOpen"
+        v-if="contacts.length > 0"
+      >
+        <cs-icon icon="plus" alt="ìcone para adicionar um item" />
+        <span>Criar contato</span>
+      </cs-button>
+      <cs-search-bar />
+    </div>
   </nav>
 </template>
 
@@ -41,7 +47,17 @@ export default {
 <style lang="scss">
 .cs-nav-header {
   height: 4rem;
-  margin: 0 0 6rem;
-  padding: 1rem;
+  padding: 0.8em 1em;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__search {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-left: 3em;
+  }
 }
 </style>
