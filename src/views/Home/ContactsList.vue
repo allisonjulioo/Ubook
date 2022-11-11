@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-list" v-if="contacts.length > 0">
+  <div class="cs-list" v-if="contactsList.length > 0">
     <div class="cs-list__template">
       <span v-for="(field, index) in fields" :key="index">
         {{ field.name }}
@@ -7,9 +7,10 @@
     </div>
 
     <div
-      class="cs-list__template"
+      class="cs-list__template cs-list__item"
       alt="item_contact_list"
-      v-for="(contact, index) in contacts"
+      v-for="(contact, index) in contactsList"
+      :class="{ 'new-contact': contact.isNewItem }"
       :key="index"
     >
       <section>
@@ -35,8 +36,16 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'ContactList',
+
+  data() {
+    return {
+      polling: null,
+      contactsList: [],
+    };
+  },
+
   computed: {
-    ...mapGetters(['contacts']),
+    ...mapGetters(['contacts', 'highlightNew']),
 
     fields() {
       return [
@@ -70,7 +79,30 @@ export default {
       'removeContact',
       'openConfirm',
       'closeConfirm',
+      'removeItemHighlight',
     ]),
+
+    handlePoolNewItemHighlight() {
+      this.polling = setInterval(() => {
+        const hasItemsHighlight = this.highlightNew.length === 0;
+
+        if (hasItemsHighlight) {
+          clearInterval(this.polling);
+        }
+
+        this.highlightNew.forEach(item => {
+          item.time -= 2;
+
+          if (item.time === 0) {
+            this.removeItemHighlight(item.id);
+          }
+        });
+      }, 1000);
+    },
+
+    isNew(id) {
+      return this.highlightNew.some(item => item.id === id);
+    },
 
     handleremoveContact(id) {
       this.removeContact(id).then(() => this.closeConfirm());
@@ -88,10 +120,37 @@ export default {
     handleEditContact(id) {
       this.$emit('editContact', id);
     },
+
+    async handleCheckIfHasHighlight() {
+      this.contactsList = await this.contacts.map(item => {
+        const isNewItem = this.highlightNew.some(ctc => ctc.id === item.id);
+
+        return { ...item, isNewItem };
+      });
+    },
   },
 
   mounted() {
     this.getContacts();
+  },
+
+  watch: {
+    highlightNew() {
+      this.handleCheckIfHasHighlight();
+      clearInterval(this.polling);
+      this.handlePoolNewItemHighlight();
+    },
+
+    contacts: {
+      handler() {
+        this.handleCheckIfHasHighlight();
+      },
+      deep: true,
+    },
+  },
+
+  beforeUnmount() {
+    clearInterval(this.polling);
   },
 };
 </script>
@@ -102,6 +161,13 @@ export default {
     display: grid;
     grid-template-columns: repeat(v-bind(fieldsLength), 1fr);
   }
+
+  &__item {
+    &.new-contact {
+      background: $highlight;
+    }
+  }
+
   &__actions {
     display: flex;
     justify-content: flex-end;

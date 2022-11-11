@@ -2,6 +2,7 @@ import { createStore } from 'vuex';
 import { ConfirmStore } from './modules/confirmDelete';
 import { ContactListStore } from './modules/contactList';
 import { FormContactStore } from './modules/formContact';
+import { HighlightNewContactStore } from './modules/highlightNewContact';
 import { ModalStore } from './modules/modal';
 
 export const store = createStore({
@@ -14,5 +15,6 @@ export const store = createStore({
     FormContactStore,
     ContactListStore,
     ConfirmStore,
+    HighlightNewContactStore,
   },
 });

@@ -20,6 +20,10 @@ export default defineComponent({
 .cs-btn {
   border: none;
   cursor: pointer;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:not(.cs-icon) {
     height: 2rem;

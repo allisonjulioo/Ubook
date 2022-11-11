@@ -43,9 +43,17 @@ export const ContactListStore = {
       }
     },
 
-    addContact({ state }: { state: ContactState }, params: Contacts) {
+    addContact(
+      { commit, state }: { commit: Commit; state: ContactState },
+      params: Contacts,
+    ) {
       return new Promise(resolve => {
-        state.contacts.push({ ...params, id: String(uuidv4()) });
+        const newContact = { ...params, id: String(uuidv4()) };
+
+        state.contacts.push(newContact);
+
+        commit('addItemHighlightData', { id: newContact.id, time: 10 });
+
         resolve(state.contacts);
       });
     },
