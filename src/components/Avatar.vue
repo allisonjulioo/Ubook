@@ -4,9 +4,7 @@
   </div>
 </template>
 <script>
-import { defineComponent } from 'vue';
-
-export default defineComponent({
+export default {
   props: {
     name: {
       type: String,
@@ -35,13 +33,13 @@ export default defineComponent({
     },
 
     getInitials() {
-      const name = this.name || 'Click Sigin';
+      const name = this.name || 'UBook';
 
       const rgx = new RegExp(/(\p{L}{1})\p{L}+/, 'gu');
 
-      let initials = [...name.matchAll(rgx)] || [];
+      let initials = [...name.matchAll(rgx)];
 
-      const firstLetterPrimaryName = initials.shift()?.[1] || '';
+      const firstLetterPrimaryName = initials.shift()?.[1];
 
       this.initials = firstLetterPrimaryName;
     },
@@ -51,7 +49,7 @@ export default defineComponent({
     this.getRandomColor();
     this.getInitials();
   },
-});
+};
 </script>
 
 <style scoped lang="scss">

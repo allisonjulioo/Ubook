@@ -45,4 +45,12 @@ describe('NavHeader component', () => {
 
     expect(searchBar.isVisible()).toBeTruthy();
   });
+
+  it('should open modal new contact', async () => {
+    const wrapper = mount(NavHeader, configMock);
+
+    wrapper.vm.handleOpen();
+
+    expect(store.getters.modalId).toBe('modal-add-contact');
+  });
 });

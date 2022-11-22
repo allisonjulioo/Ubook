@@ -99,7 +99,7 @@ export default {
         }
 
         this.highlightNew.forEach(item => {
-          item.time -= 2;
+          item.time -= 1;
 
           if (item.time === 0) {
             this.removeItemHighlight(item.id);

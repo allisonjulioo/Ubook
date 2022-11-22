@@ -13,13 +13,23 @@ describe('Avatar Component', () => {
     expect(wrapper.props('name')).toBe('Allison Nunes');
   });
 
-  it('should have custom colors random colors generator', async () => {
+  it('should correct generated initials with props', async () => {
     const wrapper = mount(Avatar, {
       props: { name: 'Allison Nunes' },
     });
 
     expect(wrapper.isVisible()).toBeTruthy();
 
-    expect(wrapper.text()).toContain('A');
+    expect(wrapper.text()).toBe('A');
+  });
+
+  it('should correct generated initials without props', async () => {
+    const wrapper = mount(Avatar, {
+      props: { name: '' },
+    });
+
+    expect(wrapper.isVisible()).toBeTruthy();
+
+    expect(wrapper.text()).toBe('U');
   });
 });

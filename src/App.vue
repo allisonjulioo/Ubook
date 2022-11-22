@@ -4,16 +4,14 @@
   <router-view />
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+<script>
 import NavHeader from '@/components/NavHeader.vue';
 import ConfirmDelete from '@/components/ConfirmDelete.vue';
 
-@Options({
+export default {
   components: {
     'cs-nav-bar': NavHeader,
     'cs-confirm': ConfirmDelete,
   },
-})
-export default class Home extends Vue {}
+};
 </script>

@@ -4,16 +4,14 @@
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
+<script>
+export default {
   props: {
     variant: {
       type: String,
     },
   },
-});
+};
 </script>
 
 <style lang="scss" scoped>
