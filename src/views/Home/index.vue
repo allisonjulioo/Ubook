@@ -8,7 +8,7 @@
 
   <cs-contacts-list @editContact="handleEditContact" />
 
-  <cs-new-contact :selectedId="selectedId" @closed="handleCloseModal" />
+  <cs-new-contact :id="selectedId" @close="handleCloseModal" />
 </template>
 
 <script>

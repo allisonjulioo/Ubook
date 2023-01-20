@@ -16,7 +16,7 @@
               <slot />
             </main>
 
-            <footer class="modal__content__footer">
+            <footer class="modal__content__footer" v-if="!hideFooter">
               <slot name="footer">
                 <cs-button
                   class="modal__content__footer__button"
@@ -59,6 +59,11 @@ export default {
     closeOnBackdropClick: {
       type: Boolean,
       default: true,
+    },
+
+    hideFooter: {
+      type: Boolean,
+      default: false,
     },
   },
 

@@ -1,6 +1,6 @@
 input {
   height: 2rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding: 0.438rem 0.5rem 0.375rem;
   border-radius: $radius;
   border: 1px solid $grey;
@@ -8,6 +8,10 @@ input {
   &.secondary {
     border: none;
     background-color: $light-grey;
+  }
+
+  &.is-invalid {
+    border-color: $danger;
   }
 }
 
@@ -22,5 +26,12 @@ fieldset {
 
   &.half {
     width: 25%;
+  }
+
+  .error-label {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.7rem;
+    color: $danger;
   }
 }
